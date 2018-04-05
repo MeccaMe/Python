@@ -48,6 +48,7 @@
 
 # 实验三 txt文件数据读取
 import os
+data = []
 dataArr = []
 dataLast = []
 fr = open('E:\PyCharm2017\doc\data\horseColic.txt')
@@ -55,9 +56,13 @@ for line in fr.readlines():
     # line = line.split(' ')[:-1]
     line = line.strip()  # 去掉换行符
     data_line = line.split('\t')
-    data_last = line.split('\t')
-    dataLast.append(21)
+    dataLast.append(data_line[21])
+    for i in range(21):
+        dataArr.append(data_line[i])
+    data.append(dataArr)
+    dataArr = []
+print dataLast
+print data
 
 fr.close()
-print dataArr
   ```

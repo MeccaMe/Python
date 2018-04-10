@@ -12,12 +12,13 @@
 #!/usr/bin/python
 # -*- coding:utf8 -*
  SList=[5,2,1,8,4,7,3,6,9]
- for i in range(0,len(SList)-1):
-     for j in range(len(SList)-i-1):
+ for i in range(0,len(SList)-1):#  i in range(3)[::-1] #从2到0倒序遍历
+     for j in range(len(SList)-i-1):
          if SList[j] > SList[j+1]:
              temp = SList[j]
              SList[j] = SList[j+1]
              SList[j+1] = temp
+             # SList[j],SList[j+1] = SList[j+1],SList[j] #Python中可不用临时变量
  print SList
 
 # # 实验二 节假日字典 json序列化并保存
@@ -46,6 +47,9 @@
 # print '从文件读取到的json：',json.load(f)
 # f.close()
 
+
+？？？
+
 # 实验三 txt文件数据读取
 import os
 data = []
@@ -65,4 +69,20 @@ print dataLast
 print data
 
 fr.close()
+# 方法2：
+fd = open('E:\PyCharm2017\doc\data\horseColic.txt')
+dataArr = []
+labelArr = []
+dt = fd.readline()
+while dt:
+    tmp = dt.split('\t')  #返回的就是一个列表
+    dataArr.append(tmp[0:21]) # 取前21个数据
+    labelArr.append(tmp[-1].strip("\n")) # 换行符在最后
+    dt = fd.readline()
+fd.close()
+# 以上为实验三；以下打印元素，用for循环按行进行，二维列表：每一个元素都是一个列表，label打印在了最后一行
+for a in dataArr:
+    print(a)
+    print(labelArr)
+
   ```
